@@ -27,8 +27,15 @@ $token = array(
 echo '<pre>';
 
 $jwt = \lmxdawn\jwt\JWT::encode($token, $key,'HS256');
-$decoded = \lmxdawn\jwt\JWT::decode($jwt, $key, array('HS256'));
-var_dump($decoded);exit;
+
+try{
+    $decoded = \lmxdawn\jwt\JWT::decode($jwt, $key, array('HS256'));
+    var_dump($decoded);exit;
+}catch (Exception $exception){
+    echo '失败';
+}
+
+exit;
 
 print_r($decoded);
 
